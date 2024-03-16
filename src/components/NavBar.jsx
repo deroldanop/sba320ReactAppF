@@ -4,11 +4,14 @@ export function NavBar() {
   return (
     <div className='nav'>
       <Link to='/'>
-        <div className='mainPage'>Weather App</div>
+        <div className='mainPage'>Current Weather</div>
       </Link>
-      {/* <Link to='/ThreeDayForecast'>
+      <Link to='/FourDaysWeather'>
         <div></div>
-      </Link> */}
+      </Link>
+      <Link to='/SixteenDaysWeather'>
+        <div></div>
+      </Link>
       
     </div>
   );

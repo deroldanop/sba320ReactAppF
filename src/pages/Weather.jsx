@@ -1,15 +1,23 @@
 import React, { useState, useEffect } from 'react';
+//import { useParams } from 'react-router-dom';
+
 
 const API_KEY = '55e8d754236986a9379f468abce6a3d6';
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid=${API_KEY}`;
 
 
-
-
 const Weather = () => {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
+
   const [error, setError] = useState(null);
+//////////////
+//  const {lon} = useParams();
+//  useEffect(() => {
+//   fetchWeather(lon);
+//   console.log(`'Esta son las ${lon}`)
+//  })
+//////////////////
 
   const fetchWeather = async (cityName) => {
     try {
@@ -19,9 +27,11 @@ const Weather = () => {
       }
       const data = await response.json();
       setWeather(data);
+      console.log(`'This is the data' ${data.coord}`);
     } catch (error) {
       setError(error.message);
     }
+    
   };
 
   const handleSubmit = (e) => {
@@ -38,6 +48,25 @@ const Weather = () => {
   if (error) return <div>Error: {error}</div>;
   if (!weather) return <div>Loading...</div>;
 
+/////////////////
+// .then(response => response.json())
+//       .then(data => {
+//         setData(data);
+//       });
+
+//     // Clean-up function (optional)
+//     return () => {
+//       console.log('Component unmounted');
+//       // Perform any clean-up here
+//     };
+//   }, []);
+
+
+//////////////////
+const lat =  weather.coord.lat;
+const lon =  weather.coord.lon;
+  console.log(weather.coord.lat)
+
   return (
     
     <div>
@@ -51,17 +80,26 @@ const Weather = () => {
         />
         <button type="submit">Search</button>
       </form>
+     
       <h2>Weather in {weather.name}</h2>
-      <p>Temperature: {Math.round(weather.main.temp - 273)}°C,  {weather.weather[0].description}, 
-      <img src={getIconURL(weather.weather[0].icon)} /></p>
-      <p>Description: {weather.weather[0].description}</p>
+      <ul className='navElements'>
+      <li><a href={`/WeatherForecast/?lon=${weather.coord.lon}&lat=${weather.coord.lat}`}>4 days forecast</a></li>
+      <li><a href={`/SixteenDaysWeather/?lon=${weather.coord.lon}&lat=${weather.coord.lat}`}>16 days forecast</a>  </li>
+      </ul>
+      <p>Temperature: {Math.round(weather.main.temp - 273)}°C,   </p>
+      <p>Feels like: {Math.round(weather.main.feels_like - 273)}°C,   </p>
+      <p>{weather.weather[0].description},</p>
+      <img src={getIconURL(weather.weather[0].icon)} />
+      <p>humidity: {weather.main.humidity}%,</p>
       <p>Sunrise: {toLocalTime(weather.sys.sunrise)}</p>
       <p>Sunset: {toLocalTime(weather.sys.sunset)}</p>
 
     </div>
+    
   );
   
 };
+
 
 
 
@@ -94,5 +132,15 @@ function getIconURL(icon) {
 }
 
 
-export default Weather;
 
+// const paramsString = "coord";
+// const searchParams = new URLSearchParams(API_KEY);
+// for (const p of searchParams) {
+//   console.log(p);
+// }
+
+
+
+
+export default Weather;
+export { fun1, fun2 };
