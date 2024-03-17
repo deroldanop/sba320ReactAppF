@@ -4,6 +4,8 @@ import Weather from "./pages/Weather";
 import NavBar from "./components/NavBar";
 
 import { Route, Routes } from 'react-router-dom';
+import FourDaysWeather from "./pages/FourDaysWeather";
+
 
 
 //Here is your key: 97e9bb6a
@@ -13,8 +15,9 @@ function App() {
       <NavBar />
       <Routes>
         <Route path='/' element={<Weather />} />
-        {/* <Route path='/MovieDetail/:imdbID' element={<MovieDetail />} />
-        <Route path='*' element={<NotFound />} /> */}
+        <Route path='/WeatherForecast' element={<FourDaysWeather />} />
+        {/* <Route path='/SixteenDaysWeather' element={<SixteenDaysWeather />} /> */}
+       
       </Routes>
     </>
   );
@@ -22,3 +25,4 @@ function App() {
 }
 
 export default App;
+

@@ -45,10 +45,10 @@ button {
   background-color: #092360;
   color: #f9f9f9;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.35s;
 }
 button:hover {
-  border-color: #aca568;
+  border-color: #d9ecf2;
   color: #092360;
 }
 button:focus,
@@ -71,15 +71,19 @@ button:focus-visible {
 
 input {
   flex: 1;
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
+  border-radius: 8px;
+  font-size: 2 rem;
   font-family: var(--font-raleway);
-  font-weight: 200;
+  font-weight: 500;
   padding-right: 1rem;
-  margin-right: 1em;
+  margin-right: 1rem;
   outline: none;
-  color: #a1a1a1;
+  color: #f9f9f9;
   background: #092360;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-family: inherit;
 }
 .mainContainer {
   display: flex; /* Use flexbox */
@@ -90,4 +94,26 @@ input {
   /* Optional: Set height and width */
   height: 100vh; /* 100% of viewport height */
   width: 100%; /* 100% of parent width */
+}
+
+.navElements {
+  
+  list-style-type: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+.navElements li {
+  display: inline-block;
+  font-size: 15px;
+  padding: 20px;
+}
+.weatherDescription {
+  display: flex;
+  flex-direction: row;
+
+}
+.weatherDescription img {
+ height: 4em;
 }
