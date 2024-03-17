@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Weather />} />
         <Route path='/WeatherForecast' element={<FourDaysWeather />} />
-        {/* <Route path='/SixteenDaysWeather' element={<SixteenDaysWeather />} /> */}
+        
        
       </Routes>
     </>

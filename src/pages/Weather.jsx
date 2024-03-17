@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 //import { useParams } from 'react-router-dom';
 import web_PhotoWeather from "../images/web_PhotoWeather.jpg"
-import east from "../images/_east.png"
-import north_east from "../images/_north_east.png"
-import north from "../images/_north.png"
-import north_west from "../images/_north_west.png"
-import west from "../images/_west.png"
-import south_west from "../images/_south_west.png"
-import south_east from "../images/_south_east.png"
-import south from "../images/_south.png"
+import east from "../images/_east2.png"
+import north_east from "../images/_north_east2.png"
+import north from "../images/_north2.png"
+import north_west from "../images/_north_west2.png"
+import west from "../images/_west2.png"
+import south_west from "../images/_south_west2.png"
+import south_east from "../images/_south_east2.png"
+import south from "../images/_south2.png"
 
 const API_KEY = '55e8d754236986a9379f468abce6a3d6';
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid=${API_KEY}`;
@@ -92,7 +92,8 @@ const Weather = () => {
       <p>Sunrise: {toLocalTime(weather.sys.sunrise)}</p>
       <p>Sunset: {toLocalTime(weather.sys.sunset)}</p>
       <p>Wind speed: {Math.round(weather.wind.speed * 3.6 * 1.61)}mph</p>
-      <div className='wind'>Direction: --
+      <div className='wind'>
+      <p>Direction:</p>
       <img src={selectImage(weather.wind.deg)} />
       </div>
       <p>Latitude: {weather.coord.lon}°</p>
@@ -136,7 +137,7 @@ function getIconURL(icon) {
 }
 function selectImage(number){
   let imgLink;
-  if(number > 337.4 && number < 22.6){
+  if(number > 337.4 || number < 22.6){
      imgLink = north;
   }else if(number >= 22.6 && number < 67.6){
     imgLink = north_east
