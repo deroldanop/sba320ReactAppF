@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 //import { useParams } from 'react-router-dom';
-//import { lat, lon } from "./FourDaysWeather"
+import web_PhotoWeather from "../images/web_PhotoWeather.jpg"
+import east from "../images/_east.png"
+import north_east from "../images/_north_east.png"
+import north from "../images/_north.png"
+import north_west from "../images/_north_west.png"
+import west from "../images/_west.png"
+import south_west from "../images/_south_west.png"
+import south_east from "../images/_south_east.png"
+import south from "../images/_south.png"
 
 const API_KEY = '55e8d754236986a9379f468abce6a3d6';
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?q={CITY_NAME}&appid=${API_KEY}`;
@@ -61,7 +69,7 @@ const Weather = () => {
   return (
     
     <div className='secondContainer'>
-      
+      <img src={web_PhotoWeather} />
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -71,7 +79,7 @@ const Weather = () => {
         />
         <button type="submit">Search</button>
       </form>
-     
+      
       <h2>Weather in {weather.name}</h2>
       <ul className='navElements'>
       <li><a href={`/WeatherForecast/?lon=${weather.coord.lon}&lat=${weather.coord.lat}`}>4 days forecast</a></li>
@@ -83,7 +91,11 @@ const Weather = () => {
       <p>Humidity: {weather.main.humidity}%,</p>
       <p>Sunrise: {toLocalTime(weather.sys.sunrise)}</p>
       <p>Sunset: {toLocalTime(weather.sys.sunset)}</p>
-      <p>Latitude: {weather.coord.lat}°</p>
+      <p>Wind speed: {Math.round(weather.wind.speed * 3.6 * 1.61)}mph</p>
+      <div className='wind'>Direction: --
+      <img src={selectImage(weather.wind.deg)} />
+      </div>
+      <p>Latitude: {weather.coord.lon}°</p>
       <p>Longitude: {weather.coord.lon}°</p>
 
     </div>
@@ -122,15 +134,32 @@ return formattedDate;
 function getIconURL(icon) {
   return `https://openweathermap.org/img/wn/${icon}@2x.png` 
 }
+function selectImage(number){
+  let imgLink;
+  if(number > 337.4 && number < 22.6){
+     imgLink = north;
+  }else if(number >= 22.6 && number < 67.6){
+    imgLink = north_east
+  }else if(number >= 67.6 && number < 112.6){
+    imgLink = east
+  }else if(number >= 112.6 && number < 157.6){
+    imgLink = south_east
+  }else if(number >= 157.6 && number < 202.6){
+    imgLink = south
+  }else if(number >= 202.6 && number < 247.6){
+    imgLink = south_west
+  }else if(number >= 247.6 && number < 292.6){
+    imgLink = west
+  }
+  else if(number >= 292.6 && number < 337.6){
+    imgLink = north_west
+}
+return imgLink;
+};
 
 
 
 
-// const paramsString = "coord";
-// const searchParams = new URLSearchParams(API_KEY);
-// for (const p of searchParams) {
-//   console.log(p);
-// }
 
 
 

@@ -92,12 +92,11 @@ input {
   /* Optional: Align items vertically */
   align-items: center;
   /* Optional: Set height and width */
-  height: 100vh; /* 100% of viewport height */
+  height: 120vh; /* 100% of viewport height */
   width: 100%; /* 100% of parent width */
 }
 
 .navElements {
-  
   list-style-type: none;
   text-align: center;
   margin: 0;
@@ -107,7 +106,7 @@ input {
 .navElements li {
   display: inline-block;
   font-size: 15px;
-  padding: 20px;
+  padding: 0;
 }
 .weatherDescription {
   display: flex;
@@ -117,3 +116,18 @@ input {
 .weatherDescription img {
  height: 4em;
 }
+
+.wind img {
+  height: 45px;
+}
+
+/*.secondContainer {
+  display: flex; /* Use flexbox */
+  /*flex-direction: column;
+  justify-content: center; /* Center content horizontally */
+  /* Optional: Align items vertically */
+ /* align-items: center;
+  /* Optional: Set height and width */
+ /* height: 100vh; /* 100% of viewport height */
+ /* width: 100%; /* 100% of parent width */
+/*}*/

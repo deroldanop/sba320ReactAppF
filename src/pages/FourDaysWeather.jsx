@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Weather from "./Weather";
+import web_PhotoWeather from "../images/web_PhotoWeather.jpg"
 //import { useParams } from 'react-router-dom';
 import { API_KEY } from "./Weather";
 
@@ -51,8 +52,9 @@ const FourDaysWeather = () => {
   // console.log(`'Here 4 days weather '${fDweather}`);
 
   return (
-    <div>  
-      <h1>Weather App</h1>
+    <div className='secondContainer'>  
+      {/* <h1>Weather App</h1> */}
+      {/* <img src={web_PhotoWeather} /> */}
       <ul className='navElements'>
       <li><a href={`/`}>Current weather</a></li>
       </ul>
@@ -62,8 +64,8 @@ const FourDaysWeather = () => {
       <ul className="daysWeather">
         <li>
           <p>{formatDate(fDweather.list[4].dt_txt)}</p>
-          <p>Temperatura: {Math.round(fDweather.list[4].main.temp - 273)}°C, min: {Math.round(fDweather.list[2].main.temp_min - 273)}°C, max: {Math.round(fDweather.list[2].main.temp_max = 273)}°C</p>
-          <p>Feels like: {Math.round(fDweather.list[4].main.feels_like = 273)}°C,</p>
+          <p>Temperatura: {Math.round(fDweather.list[4].main.temp - 273)}°C, min: {Math.round(fDweather.list[2].main.temp_min - 273)}°C, max: {Math.round(fDweather.list[2].main.temp_max - 273)}°C</p>
+          <p>Feels like: {Math.round(fDweather.list[4].main.feels_like - 273)}°C,</p>
           <p>Humidity: {fDweather.list[4].main.humidity}%,</p>
           <div className="weatherDescription">
           <p>{fDweather.list[4].weather[0].description}: ----     </p>
@@ -72,8 +74,8 @@ const FourDaysWeather = () => {
         </li>
         <li>
           <p>{formatDate(fDweather.list[12].dt_txt)}</p>
-          <p>Temperatura: {Math.round(fDweather.list[12].main.temp - 273)}°C, min: {Math.round(fDweather.list[2].main.temp_min - 273)}°C, max: {Math.round(fDweather.list[2].main.temp_max = 273)}°C</p>
-          <p>Feels like: {Math.round(fDweather.list[12].main.feels_like = 273)}°C,</p>
+          <p>Temperatura: {Math.round(fDweather.list[12].main.temp - 273)}°C, min: {Math.round(fDweather.list[2].main.temp_min - 273)}°C, max: {Math.round(fDweather.list[2].main.temp_max - 273)}°C</p>
+          <p>Feels like: {Math.round(fDweather.list[12].main.feels_like - 273)}°C,</p>
           <p>Humidity: {fDweather.list[12].main.humidity}%,</p>
           <div className="weatherDescription">
           <p>{fDweather.list[12].weather[0].description}: ----     </p>
@@ -82,8 +84,8 @@ const FourDaysWeather = () => {
         </li>
         <li>
           <p>{formatDate(fDweather.list[20].dt_txt)}</p>
-          <p>Temperatura: {Math.round(fDweather.list[20].main.temp - 273)}°C, min: {Math.round(fDweather.list[2].main.temp_min - 273)}°C, max: {Math.round(fDweather.list[2].main.temp_max = 273)}°C</p>
-          <p>Feels like: {Math.round(fDweather.list[20].main.feels_like = 273)}°C,</p>
+          <p>Temperatura: {Math.round(fDweather.list[20].main.temp - 273)}°C, min: {Math.round(fDweather.list[2].main.temp_min - 273)}°C, max: {Math.round(fDweather.list[2].main.temp_max - 273)}°C</p>
+          <p>Feels like: {Math.round(fDweather.list[20].main.feels_like - 273)}°C,</p>
           <p>Humidity: {fDweather.list[20].main.humidity}%,</p>
           <div className="weatherDescription">
           <p>{fDweather.list[20].weather[0].description}: ----     </p>
@@ -92,14 +94,15 @@ const FourDaysWeather = () => {
         </li>
         <li>
           <p>{formatDate(fDweather.list[28].dt_txt)}</p>
-          <p>Temperatura: {Math.round(fDweather.list[28].main.temp - 273)}°C, min: {Math.round(fDweather.list[2].main.temp_min - 273)}°C, max: {Math.round(fDweather.list[2].main.temp_max = 273)}°C</p>
-          <p>Feels like: {Math.round(fDweather.list[28].main.feels_like = 273)}°C,</p>
+          <p>Temperatura: {Math.round(fDweather.list[28].main.temp - 273)}°C, min: {Math.round(fDweather.list[2].main.temp_min - 273)}°C, max: {Math.round(fDweather.list[2].main.temp_max - 273)}°C</p>
+          <p>Feels like: {Math.round(fDweather.list[28].main.feels_like - 273)}°C,</p>
           <p>Humidity: {fDweather.list[28].main.humidity}%,</p>
           <div className="weatherDescription">
           <p>{fDweather.list[28].weather[0].description}: ----     </p>
            <img src={getIconURL(fDweather.list[28].weather[0].icon)} />
           </div>
         </li>
+        
 
       </ul>
          </div>
@@ -128,6 +131,13 @@ function formatDate(dateString) {
 function getIconURL(icon) {
   return `https://openweathermap.org/img/wn/${icon}@2x.png`;
 }
+
+// function selectImage(number){
+//   let imgLink;
+//   if(number > 337.4 && number < 22.6){
+//      imgLink =
+//   }
+// }
 
 export default FourDaysWeather;
 
