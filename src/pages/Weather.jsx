@@ -91,13 +91,14 @@ const Weather = () => {
       <p>Humidity: {weather.main.humidity}%,</p>
       <p>Sunrise: {toLocalTime(weather.sys.sunrise)}</p>
       <p>Sunset: {toLocalTime(weather.sys.sunset)}</p>
-      <p>Wind speed: {Math.round(weather.wind.speed * 3.6 * 1.61)}mph</p>
+      <p>Wind speed: {Math.round(weather.wind.speed )}mph</p>
       <div className='wind'>
       <p>Direction:</p>
       <img src={selectImage(weather.wind.deg)} />
       </div>
-      <p>Latitude: {weather.coord.lon}°</p>
-      <p>Longitude: {weather.coord.lon}°</p>
+      <p>Latitude: {(weather.coord.lat).toFixed(2)}°</p>
+      <p>Longitude: {(weather.coord.lon).toFixed(2)}°</p>
+      <p>Visibility: {(weather.visibility / 1610).toFixed(1)}miles</p>
 
     </div>
     
