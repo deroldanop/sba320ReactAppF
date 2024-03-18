@@ -118,6 +118,11 @@ input {
  filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(0deg) brightness(100%) contrast(100%); /* Change the color */
 }
 
+@media screen and (max-width: 768px){
+  h1 {
+    visibility: collapse;
+  }
+}
 
 /* .wind img {
   height: 35px;

@@ -66,8 +66,7 @@ const forecastList = getForecacst(fDweather.list)
 
   return (
     <div className='secondContainer'>  
-      {/* <h1>Weather App</h1> */}
-      {/* <img src={web_PhotoWeather} /> */}
+      <img src={web_PhotoWeather} />
       <ul className='navElements'>
       <li><a href={`/`}>Current weather</a></li>
       </ul>
@@ -78,8 +77,7 @@ const forecastList = getForecacst(fDweather.list)
       {forecastList.map((element) => (
         <li>
         <p>{formatDate(element.dt_txt)}</p>
-        <p>Temperatura: {Math.round(element.main.temp - 273)}°C, min: {Math.round(element.main.temp_min - 273)}°C, max: {Math.round(element.main.temp_max - 273)}°C</p>
-        <p>Feels like: {Math.round(element.main.feels_like - 273)}°C,</p>
+        <p>Temperatura: {Math.round(element.main.temp - 273)}°C, Feels like: {Math.round(element.main.feels_like - 273)}°C,</p>
         <p>Humidity: {element.main.humidity}%,</p>
         <div className="weatherDescription">
         <p>{element.weather[0].description}: ----     </p>
