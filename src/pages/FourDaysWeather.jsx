@@ -51,15 +51,50 @@ const FourDaysWeather = () => {
 
   // console.log(`'Here 4 days weather '${fDweather}`);
   //for(let elem = 4; )
-  function getForecacst(array) {
+//   function getForecacst(array) {
+//     let result = [];
+//     let index = 4;
+    
+//     while (index < array.length - 4) {
+//         result.push(array[index]);
+//         index += 8;
+//     }
+//     return result;
+// }
+
+
+function getForecacst(array) {
+	let tomorrowIndex = 0;
+	while (tomorrowIndex < array.length) {
+		if (array[++tomorrowIndex].dt_txt.includes('00:00:00')){
+			break;
+		}
+	}
     let result = [];
-    let index = 4;
-    while (index < array.length - 4) {
+    let index = tomorrowIndex + 4;
+    while (index < array.length) {
         result.push(array[index]);
         index += 8;
     }
     return result;
 }
+
+// function findIndex(array) {
+//   let index = 0;
+//   result = [];
+// //  if (array[index] === array[0]) {
+// //   index++
+// }else {
+//   for (let i = index; i <= (index + 8); i++){
+//     for (let j = 0; j < 4; j++){
+//       result.push(array[i])++;
+//     }
+//     return result / 8;
+//   }
+//   return result
+// }
+//   return result;
+// }
 
 
 const forecastList = getForecacst(fDweather.list) 
@@ -77,7 +112,7 @@ const forecastList = getForecacst(fDweather.list)
       {forecastList.map((element) => (
         <li>
         <p>{formatDate(element.dt_txt)}</p>
-        <p>Temperatura: {Math.round(element.main.temp - 273)}°C, Feels like: {Math.round(element.main.feels_like - 273)}°C,</p>
+        <p>Temperature: {Math.round(element.main.temp - 273)}°C, Feels like: {Math.round(element.main.feels_like - 273)}°C,</p>
         <p>Humidity: {element.main.humidity}%,</p>
         <div className="weatherDescription">
         <p>{element.weather[0].description}: ----     </p>
@@ -167,12 +202,7 @@ function getIconURL(icon) {
   return `https://openweathermap.org/img/wn/${icon}@2x.png`;
 }
 
-function selectTime(number){
-  let imgLink;
-  if(number > 337.4 && number < 22.6){
-   
-  }
-}
+
 
 export default FourDaysWeather;
 
