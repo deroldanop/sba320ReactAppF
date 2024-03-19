@@ -72,7 +72,7 @@ function getForecacst(array) {
 	}
     let result = [];
     let index = tomorrowIndex + 4;
-    while (index < array.length) {
+    while (index < array.length && result.length < 4) {
         result.push(array[index]);
         index += 8;
     }
